@@ -1,4 +1,4 @@
-from crop_image_ktp import create_app
+from ktp_ocr_crop import create_app
 
 app = create_app()
 
