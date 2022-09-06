@@ -15,6 +15,8 @@ ktp_ocr_crop/elite-dreamer-359506-4b3471bc4dea.json
 .coverage
 htmlcov/
 
+docker-compose.yml
+
 dist/
 build/
 *.egg-info/

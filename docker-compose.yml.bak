@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "7007:7007"
+    volumes:
+      - .:/code
+
+# networks:
+#   flask:
+#     driver: bridge
+#     ipam:
+#         driver: default
+#         config:
+#           - subnet: "172.70.0.0/16"
+#             gateway: "172.70.0.1"
+
+
