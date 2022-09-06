@@ -1,4 +1,3 @@
-from email import message
 from flask import request, jsonify
 from . import ktp_image as ktpg
 from genericpath import exists
@@ -38,10 +37,6 @@ def image_ktp():
     id_attachment_ref = request.form.get('id_member')
     nama_file = request.form.get('variabel_image')
     img_var ='ktp_ocr_crop/data_ktp_muslimat_nu/{}'.format(nama_file)
-
-    if img_var is not exists:
-        return jsonify(message='Image Belum Ada'), 500
-
     s3_bucket = app.config['S3_BUCKET']
     s3_dir = app.config['S3_DIR']
     session = boto3.session.Session()
@@ -98,9 +93,6 @@ def get_ktp():
             if id_member is None:
                 jsonify(message="Tidak Ada Member"), 500
             if query_graduates:
-                os.remove('ktp_ocr_crop/data_ktp_muslimat_nu/%s'%(nama_file))
-                os.remove('ktp_ocr_crop/resource/%s'%(nama_file))
-
                 return jsonify(message="NIK Sudah terdaftar"), 500
             else:
                 id_member.nik = data_ktp[0]['identity_number']
@@ -141,7 +133,7 @@ def get_ktp():
                 id_member.tempat_lahir = data_ktp[0]['birth_place']
 
                         # id_member.tanggal_lahir = data_ktp[0]['birth_date']
-                if data_ktp[0]['birth_date'] == None:
+                if data_ktp[0]['birth_date'] == 'NaN':
                     id_member.tanggal_lahir = date.today()
                 else:
                     id_member.tanggal_lahir = data_ktp[0]['birth_date']
@@ -159,5 +151,5 @@ def get_ktp():
 
                 os.remove('ktp_ocr_crop/data_ktp_muslimat_nu/%s'%(nama_file))
                 os.remove('ktp_ocr_crop/resource/%s'%(nama_file))
-
+                
                 return jsonify(message='Success OCR'), 200
