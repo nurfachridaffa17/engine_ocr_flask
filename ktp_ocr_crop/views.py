@@ -134,7 +134,7 @@ def get_ktp():
 
                         # id_member.tanggal_lahir = data_ktp[0]['birth_date']
                 if data_ktp[0]['birth_date'] == 'NaN':
-                    id_member.tanggal_lahir = date.today()
+                    id_member.tanggal_lahir = dt.today()
                 else:
                     id_member.tanggal_lahir = data_ktp[0]['birth_date']
 
