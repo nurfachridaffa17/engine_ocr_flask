@@ -17,6 +17,9 @@ htmlcov/
 
 docker-compose.yml
 
+fullchain.pem
+privkey.pem
+
 dist/
 build/
 *.egg-info/
