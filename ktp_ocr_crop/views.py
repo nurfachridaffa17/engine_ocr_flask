@@ -92,8 +92,8 @@ def get_ktp():
             query_graduates = db.session.query(M_Member).filter(M_Member.nik == data_ktp[0]['identity_number'])
             if id_member is None:
                 jsonify(message="Tidak Ada Member"), 500
-            if query_graduates:
-                return jsonify(message="NIK Sudah terdaftar"), 500
+            # if query_graduates:
+            #     return jsonify(message="NIK Sudah terdaftar"), 500
             else:
                 id_member.nik = data_ktp[0]['identity_number']
 
