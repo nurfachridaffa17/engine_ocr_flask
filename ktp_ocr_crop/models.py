@@ -30,6 +30,8 @@ class t_attachment(db.Model):
     path = db.Column(db.String, nullable = False)
     is_cropped = db.Column(db.Integer)
     desc = db.Column(db.String, nullable = False)
+    createdby = db.Column(db.Integer)
+    updatedby = db.Column(db.Integer)
 
 class t_log_attachment(db.Model):
     __tablename__ = 't_log_attachment'

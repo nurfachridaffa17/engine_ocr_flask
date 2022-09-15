@@ -68,7 +68,9 @@ def image_ktp():
             nama_file = nama_file,
             path =f'{s3_dir}/{nama_file}' ,
             is_cropped = 1,
-            desc = 'image_ktp_crop'
+            desc = 'image_ktp_crop',
+            createdby = 1,
+            updatedby = 1
         )
         db.session.add(t_attachemnt_member)
         db.session.commit()
