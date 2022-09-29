@@ -19,6 +19,7 @@ class M_Member(db.Model):
     jabatan = db.Column(db.String, nullable = False)
     no_hp = db.Column(db.String, nullable = False)
     alamat_ktp = db.Column(db.String, nullable = False)
+    alamat_domisili = db.Column(db.String, nullable = False)
 
 class t_attachment(db.Model):
     __tablename__ = 't_attachment'

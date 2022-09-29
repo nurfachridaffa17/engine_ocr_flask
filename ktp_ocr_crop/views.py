@@ -84,6 +84,7 @@ def get_ktp():
         nama_file = request.form.get('variabel')
         img_path ='ktp_ocr_crop/data_ktp_muslimat_nu/{}'.format(request.form.get('variabel'))
         member_id = request.form.get('id')
+        domisili = int(request.form.get('use_ktp'))
         check_member = db.session.query(M_Member).filter_by(id=member_id).first()
         if check_member.nik is None:
             ocr.process_ocr(img_path)
@@ -94,8 +95,8 @@ def get_ktp():
             query_graduates = db.session.query(M_Member).filter_by(nik=data_ktp[0]['identity_number']).first()
             if id_member is None:
                 jsonify(message="Tidak Ada Member"), 500
-            if query_graduates:
-                return jsonify(message="NIK Sudah terdaftar"), 500
+            # if query_graduates:
+            #     return jsonify(message="NIK Sudah terdaftar"), 500
             else:
                 id_member.nik = data_ktp[0]['identity_number']
 
@@ -140,7 +141,12 @@ def get_ktp():
                 else:
                     id_member.tanggal_lahir = data_ktp[0]['birth_date']
 
-                id_member.alamat_ktp = data_ktp[0]['address']
+                if domisili == 1:
+                    id_member.alamat_ktp = data_ktp[0]['address']
+                    id_member.alamat_domisili = data_ktp[0]['address']
+                else:
+                    id_member.alamat_ktp = data_ktp[0]['address']
+                    # id_member.alamat_domisili = data_ktp[0]['address']
 
                 if data_ktp[0]['religion'] == 'ISLAM':
                     id_member.id_agama = 1
