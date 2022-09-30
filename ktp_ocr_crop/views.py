@@ -92,7 +92,7 @@ def get_ktp():
             ocr_path = cfg.json_loc+'ocr_'+img_name+'.npy'
             data_ktp = extractor.process_extract_entities(ocr_path).to_dict(orient='records')
             id_member = db.session.query(M_Member).get(member_id)
-            query_graduates = db.session.query(M_Member).filter_by(nik=data_ktp[0]['identity_number']).first()
+            # query_graduates = db.session.query(M_Member).filter_by(nik=data_ktp[0]['identity_number']).first()
             if id_member is None:
                 jsonify(message="Tidak Ada Member"), 500
             # if query_graduates:
@@ -141,9 +141,9 @@ def get_ktp():
                 else:
                     id_member.tanggal_lahir = data_ktp[0]['birth_date']
 
-                if domisili is 1:
-                    id_member.alamat_ktp = data_ktp[0]['address']
-                    id_member.alamat_domisili = data_ktp[0]['address']
+                if domisili == 1:
+                    alamat_ktp = id_member.alamat_ktp = data_ktp[0]['address']
+                    id_member.alamat_domisili = alamat_ktp
                 else:
                     id_member.alamat_ktp = data_ktp[0]['address']
                     # id_member.alamat_domisili = data_ktp[0]['address']
