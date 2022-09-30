@@ -143,7 +143,7 @@ def get_ktp():
                 
                 # id_member.alamat_ktp = data_ktp[0]['address']
 
-                if int(domisili) == 1:
+                if domisili == '1':
                     id_member.alamat_ktp = data_ktp[0]['address']
                     id_member.alamat_domisili = data_ktp[0]['address']
                 else:
