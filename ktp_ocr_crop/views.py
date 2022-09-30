@@ -84,7 +84,7 @@ def get_ktp():
         nama_file = request.form.get('variabel')
         img_path ='ktp_ocr_crop/data_ktp_muslimat_nu/{}'.format(request.form.get('variabel'))
         member_id = request.form.get('id')
-        domisili = int(request.form.get('use_ktp'))
+        domisili = request.form.get('use_ktp')
         check_member = db.session.query(M_Member).filter_by(id=member_id).first()
         if check_member.nik is None:
             ocr.process_ocr(img_path)
