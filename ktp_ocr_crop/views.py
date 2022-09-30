@@ -140,13 +140,14 @@ def get_ktp():
                     id_member.tanggal_lahir = dt.today()
                 else:
                     id_member.tanggal_lahir = data_ktp[0]['birth_date']
+                
+                # id_member.alamat_ktp = data_ktp[0]['address']
 
                 if domisili == 1:
-                    alamat_ktp = id_member.alamat_ktp = data_ktp[0]['address']
-                    id_member.alamat_domisili = alamat_ktp
+                    id_member.alamat_ktp = data_ktp[0]['address']
+                    id_member.alamat_domisili = data_ktp[0]['address']
                 else:
                     id_member.alamat_ktp = data_ktp[0]['address']
-                    # id_member.alamat_domisili = data_ktp[0]['address']
 
                 if data_ktp[0]['religion'] == 'ISLAM':
                     id_member.id_agama = 1
