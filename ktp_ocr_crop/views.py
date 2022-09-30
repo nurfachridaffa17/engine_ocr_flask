@@ -141,7 +141,7 @@ def get_ktp():
                 else:
                     id_member.tanggal_lahir = data_ktp[0]['birth_date']
 
-                if domisili == 1:
+                if domisili is 1:
                     id_member.alamat_ktp = data_ktp[0]['address']
                     id_member.alamat_domisili = data_ktp[0]['address']
                 else:
