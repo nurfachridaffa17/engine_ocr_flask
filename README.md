@@ -14,6 +14,7 @@ PYTHON
 - BUAT FILE CONFIG.PY
 ISINYA:
 
+
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -26,7 +27,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{USER_DATABASE}:{PASSWORD_USER}@{IP DATABASE}:{PORT}/{NAMA DATABASE}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    S3_BUCKET = 'nekosa-muslimat'
+    S3_BUCKET = '{NAMA BUCKET}'
     S3_KEY = '{S3 KEY}'
     S3_SECRET = '{SECRET PASSWORD}'
     S3_LOCATION = '{LOCATION S3}'
