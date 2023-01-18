@@ -9,3 +9,25 @@ SCAN KTP OCR WITH FLASK AND GOOGLE CLOUD VISION
 
 CERTIFICATE 
 - FILE CERTIFICATE DITARO DILUAR SEPERTI FILE RUN.PY
+
+PYTHON
+- BUAT FILE CONFIG.PY
+ISINYA:
+
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class Config(object):
+    DEBUG = False
+    TESTING = False
+    CSRF_ENABLED = True
+    SECRET_KEY = 'super secret key'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{USER_DATABASE}:{PASSWORD_USER}@{IP DATABASE}:{PORT}/{NAMA DATABASE}'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    S3_BUCKET = 'nekosa-muslimat'
+    S3_KEY = '{S3 KEY}'
+    S3_SECRET = '{SECRET PASSWORD}'
+    S3_LOCATION = '{LOCATION S3}'
+    S3_DIR = '{DIRECTORY S3}'
