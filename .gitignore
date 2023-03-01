@@ -10,6 +10,7 @@ ktp_ocr_crop/OCR_texts/*
 ktp_ocr_crop/resource/*
 
 ktp_ocr_crop/ereg-muslimat-76ee33a5f1a7.json
+ktp_ocr_crop/Output_data/*
 
 .pytest_cache/
 .coverage
