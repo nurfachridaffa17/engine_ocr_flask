@@ -3,7 +3,7 @@ from . import ktp_image as ktpg
 from genericpath import exists
 from datetime import datetime as dt
 from . import app
-from .models import db, t_attachment, M_Member
+from .models import db, t_attachment, M_Member, t_log_member
 import boto3
 from . import entity as extractor
 from . import kyc_config as cfg
@@ -95,7 +95,16 @@ def get_ktp():
             query_graduates = db.session.query(M_Member).filter_by(nik=data_ktp[0]['identity_number']).first()
             if id_member is None:
                 jsonify(message="Tidak Ada Member"), 500
-            if query_graduates:
+            if query_graduates is not None:
+                t_log_member_input = t_log_member(
+                    id_member = member_id,
+                    id_status = 21,
+                    createdby = 1,
+                    updatedby = 1
+                )
+                db.session.add(t_log_member_input)
+                db.session.commit()
+                db.session.close()
                 return jsonify(message="NIK Sudah terdaftar"), 500
             else:
                 id_member.nik = data_ktp[0]['identity_number']

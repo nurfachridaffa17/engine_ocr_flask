@@ -47,3 +47,13 @@ class m_status(db.Model):
     kode = db.Column(db.String)
     nama = db.Column(db.String, nullable = False)
     desc = db.Column(db.String, nullable = False)
+
+class t_log_member(db.Model):
+    __tablename__ = 't_log_member'
+    id = db.Column(db.Integer, primary_key = True)
+    id_status = db.Column(db.Integer)
+    id_member = db.Column(db.Integer)
+    desc = db.Column(db.String, nullable = False)
+    createdby = db.Column(db.Integer)
+    updatedby = db.Column(db.Integer)
+    is_active = db.Column(db.Integer)

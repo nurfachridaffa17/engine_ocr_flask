@@ -6,6 +6,7 @@ services:
       - "7007:7007"
     volumes:
       - .:/code
+    restart: always
 
 # networks:
 #   flask:
