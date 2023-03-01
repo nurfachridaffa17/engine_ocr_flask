@@ -94,7 +94,7 @@ def get_ktp():
             id_member = db.session.query(M_Member).get(member_id)
             query_graduates = db.session.query(M_Member).filter_by(nik=data_ktp[0]['identity_number']).first()
             if id_member is None:
-                jsonify(message="Tidak Ada Member"), 500
+                return jsonify(message="Tidak Ada Member"), 500
             if query_graduates is not None:
                 t_log_member_input = t_log_member(
                     id_member = member_id,
